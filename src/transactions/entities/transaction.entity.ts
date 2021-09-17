@@ -6,6 +6,16 @@ import {
   DataType,
 } from 'sequelize-typescript';
 
+export enum TransactionCategory {
+  CATEGORY1 = 'category1',
+  CATEGORY2 = 'category2',
+}
+
+export enum TransactionType {
+  CREDIT = 'credit',
+  DEBIT = 'debit',
+}
+
 @Table({
   tableName: 'transactions',
   createdAt: 'created_at',
@@ -26,11 +36,11 @@ export class Transaction extends Model {
   description: string;
 
   @Column({ allowNull: false })
-  category: string;
+  category: TransactionCategory;
 
   @Column({ allowNull: false })
   amount: number;
 
   @Column({ allowNull: false })
-  type: string;
+  type: TransactionType;
 }
